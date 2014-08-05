@@ -1,0 +1,27 @@
+@main("Contact Book") {
+
+  <table id="contactsList">
+  <tr><th>Name</th><th>Age</th><th>Address</th><th>Delete</th></tr>
+  </table>
+
+  <script type="text/javascript">
+  
+  $(document).ready(function(){
+    $.ajax({
+      url: "/json/contacts",
+      success: function(data){
+        $.each(data, function(index, contact){
+          $("#contactsList").append(
+            "<tr><td>" + contact.name +
+            "</td><td>" + contact.age +
+            "</td><td>" + contact.address + 
+            "</td><td><a href='/deleteContact/" + contact.id + "'><button>Delete</button></a>" +
+            "</td></tr>"
+          );
+        })
+      }
+    });
+  });
+  
+  </script>
+}

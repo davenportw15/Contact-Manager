@@ -1,0 +1,31 @@
+@(userForm: Form[models.schemas.Person])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("New Contact") {
+
+  @form(action=routes.Application.addContact) {
+    @inputText(
+      userForm("name"),
+      '_label -> "",
+      '_help -> "",
+      'placeholder -> "Name"
+
+    )
+    @inputText(
+      userForm("address"),
+      '_label -> "",
+      '_help -> "",
+      'placeholder -> "Address"
+    )
+    @inputText(
+      userForm("age"),
+      '_label -> "",
+      '_help -> "",
+      'placeholder -> "Age"
+    )
+    <input type="submit" value="Create Contact" />
+  }	
+
+}
